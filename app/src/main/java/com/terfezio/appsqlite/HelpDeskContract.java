@@ -9,7 +9,7 @@ public final class HelpDeskContract {
         private HelpDeskContract() {}
 
         /* Inner class that defines the table contents */
-        public static class Usuario implements BaseColumns {
+        public static class UsuarioEntry implements BaseColumns {
             public static final String TABLE_NAME = "usuario";
             public static final String COLUMN_NAME_NOMBRE = "nombre";
             public static final String COLUMN_NAME_APELLIDOS = "apellidos";
@@ -19,15 +19,15 @@ public final class HelpDeskContract {
             public static final String COLUMN_NAME_FOTO = "foto";
             public static final String COLUMN_NAME_PERFIL = "perfil";
         }
-        public static class Incidencia implements BaseColumns {
+        public static class IncidenciaEntry implements BaseColumns {
             public static final String TABLE_NAME = "incidencia";
             public static final String COLUMN_NAME_DNI = "dni";
-            public static final String COLUMN_NAME_FECHA_INCIDENCIA = "fecha_incidencia";
+            public static final String COLUMN_NAME_FECHA_INCIDENCIA = "fechaIncidencia";
             public static final String COLUMN_NAME_OBSERVACIONES = "observaciones";
-            public static final String COLUMN_NAME_DNI_INFORMATICO = "dni_informatico";
-            public static final String COLUMN_NAME_ESTADO_INCIDENCIA = "estado_incidencia";
-            public static final String COLUMN_NAME_FECHA_RESOLUCION = "fecha_resolucion";
-            public static final String COLUMN_NAME_OBSERVACIONES_INFORMATICO = "observaciones_informatico";
+            public static final String COLUMN_NAME_DNI_INFORMATICO = "dniInformatico";
+            public static final String COLUMN_NAME_ESTADO_INCIDENCIA = "estadoIncidencia";
+            public static final String COLUMN_NAME_FECHA_RESOLUCION = "fechaResolucion";
+            public static final String COLUMN_NAME_OBSERVACIONES_INFORMATICO = "observacionesInformatico";
         }
     }
 
