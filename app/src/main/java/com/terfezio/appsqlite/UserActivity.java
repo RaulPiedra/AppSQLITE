@@ -2,10 +2,13 @@ package com.terfezio.appsqlite;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.provider.BaseColumns;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -16,11 +19,28 @@ public class UserActivity extends AppCompatActivity {
     List<Usuario> usuarios;
     HelpDeskHelper helpDeskHelper;
     SQLiteDatabase sqLiteDatabase;
+    AdaptadorUsuario adaptadorUsuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
+        listViewUsuario = findViewById(R.id.listViewUsuario);
+        cargarUsuarios();
+
+
+        listViewUsuario.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position,
+                                    long id) {
+                Intent intent = new Intent(getApplicationContext(), EditarUsuarioActivity.class);
+                Usuario usuario = usuarios.get(position);
+                intent.putExtra("usuario", usuario);
+                startActivity(intent);
+            }
+        });
+    }
+    public void cargarUsuarios() {
 
         helpDeskHelper = new HelpDeskHelper(getApplicationContext());
         sqLiteDatabase = helpDeskHelper.getReadableDatabase();
@@ -58,15 +78,8 @@ public class UserActivity extends AppCompatActivity {
 
 
         }
-
-        listViewUsuario = findViewById(R.id.listViewUsuario);
-
-        Usuario usuario = new Usuario("pepe", "perez", "44l", "pepe", "123", 0, null);
-        Usuario usuario2 = new Usuario("pepe", "perez", "44c", "pepe", "123", 1, null);
-
-        //usuarios.add(usuario);
-        //usuarios.add(usuario2);
         AdaptadorUsuario adaptadorUsuario = new AdaptadorUsuario(this, usuarios);
         listViewUsuario.setAdapter(adaptadorUsuario);
+        helpDeskHelper.close();
     }
 }

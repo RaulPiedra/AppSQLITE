@@ -2,7 +2,9 @@ package com.terfezio.appsqlite;
 
 import android.content.ContentValues;
 
-public class Usuario {
+import java.io.Serializable;
+
+public class Usuario implements Serializable {
     private String nombre;
     private String apellidos;
     private String dni;
