@@ -1,6 +1,8 @@
 package com.terfezio.appsqlite;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,9 +50,13 @@ public class AdaptadorUsuario extends BaseAdapter {
         textViewNombre = view.findViewById(R.id.textViewNombre);
         textViewInfo = view.findViewById(R.id.textViewInfo);
 
-        imageViewUsuario.setImageResource(R.drawable.user);
-        textViewNombre.setText(usuario.getNombre());
-        textViewInfo.setText(usuario.getDni());
+        Bitmap bitmap = BitmapFactory.decodeByteArray(usuario.getFoto(),0, usuario.getFoto().length);
+
+        imageViewUsuario.setImageBitmap(bitmap);
+        String nombreCompleto = usuario.getNombre() + " " + usuario.getApellidos();
+        textViewNombre.setText(nombreCompleto);
+        String info = "DNI: " + usuario.getDni();
+        textViewInfo.setText(info);
         return view;
     }
 }

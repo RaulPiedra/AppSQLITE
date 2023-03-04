@@ -8,13 +8,13 @@ public class Usuario {
     private String dni;
     private String usuario;
     private String pass;
-    private boolean perfil;
-    private String foto;
+    private int perfil;
+    private byte[] foto;
 
     public Usuario() {
     }
 
-    public Usuario(String nombre, String apellidos, String dni, String usuario, String pass, boolean perfil, String foto) {
+    public Usuario(String nombre, String apellidos, String dni, String usuario, String pass, int perfil, byte[] foto) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.dni = dni;
@@ -31,6 +31,7 @@ public class Usuario {
         values.put(HelpDeskContract.UsuarioEntry.COLUMN_NAME_USUARIO, usuario);
         values.put(HelpDeskContract.UsuarioEntry.COLUMN_NAME_PASS, pass);
         values.put(HelpDeskContract.UsuarioEntry.COLUMN_NAME_PERFIL, perfil);
+        values.put(HelpDeskContract.UsuarioEntry.COLUMN_NAME_FOTO, foto);
         return values;
 
     }
@@ -75,19 +76,19 @@ public class Usuario {
         this.pass = pass;
     }
 
-    public boolean isPerfil() {
+    public int isPerfil() {
         return perfil;
     }
 
-    public void setPerfil(boolean perfil) {
+    public void setPerfil(int perfil) {
         this.perfil = perfil;
     }
 
-    public String getFoto() {
+    public byte[] getFoto() {
         return foto;
     }
 
-    public void setFoto(String foto) {
+    public void setFoto(byte[] foto) {
         this.foto = foto;
     }
 }

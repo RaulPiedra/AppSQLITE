@@ -18,4 +18,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(view.getContext(), UserActivity.class);
         startActivity(intent);
     }
+
+    public void abrirCrearUsuario(View view) {
+        Intent intent = new Intent(view.getContext(), RegistroUsuarioActivity.class);
+        startActivity(intent);
+    }
 }
