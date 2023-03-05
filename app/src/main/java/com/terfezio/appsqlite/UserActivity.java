@@ -5,12 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.provider.BaseColumns;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -74,6 +78,14 @@ public class UserActivity extends AppCompatActivity {
             String pass = cursor.getString(cursor.getColumnIndexOrThrow(HelpDeskContract.UsuarioEntry.COLUMN_NAME_PASS));
             byte[] bytes = cursor.getBlob(cursor.getColumnIndexOrThrow(HelpDeskContract.UsuarioEntry.COLUMN_NAME_FOTO));
             int perfil = cursor.getInt(cursor.getColumnIndexOrThrow(HelpDeskContract.UsuarioEntry.COLUMN_NAME_PERFIL));
+
+            if(bytes.length == 1) {
+                Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.user);
+
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                bytes = stream.toByteArray();
+            }
             Usuario usuario1 = new Usuario(nombre, apellidos, dni, usuario, pass, perfil, bytes);
             usuarios.add(usuario1);
         }

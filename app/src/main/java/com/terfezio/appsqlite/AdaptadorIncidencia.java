@@ -56,7 +56,7 @@ public class AdaptadorIncidencia extends RecyclerView.Adapter<AdaptadorIncidenci
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
-        viewHolder.getImageViewIncidencia().setImageResource(R.drawable.user);
+        viewHolder.getImageViewIncidencia().setImageResource(R.drawable.incidencia);
         viewHolder.getTextViewIncidencia().setText(incidencias.get(position).getDni());
         viewHolder.getTextViewInfoIncidencia().setText(incidencias.get(position).getObservaciones());
 

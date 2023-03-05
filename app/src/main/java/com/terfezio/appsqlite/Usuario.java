@@ -78,7 +78,7 @@ public class Usuario implements Serializable {
         this.pass = pass;
     }
 
-    public int isPerfil() {
+    public int getPerfil() {
         return perfil;
     }
 

@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -21,6 +22,7 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
     private EditText editTextDni;
     private EditText editTextUsuario;
     private EditText editTextPassword;
+    private CheckBox checkBox;
     private Bitmap imageBitmap;
     private ImageView imageView;
 
@@ -35,6 +37,7 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
         editTextUsuario = findViewById(R.id.editTextUsuario);
         editTextPassword = findViewById(R.id.editTextTextPassword);
         imageView = findViewById(R.id.imageView2);
+        checkBox = findViewById(R.id.checkBox);
 
     }
 
@@ -62,6 +65,8 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
         String dni = editTextDni.getText().toString();
         String usuario = editTextUsuario.getText().toString();
         String password = editTextPassword.getText().toString();
+        int perfil = 0;
+        if (checkBox.isChecked()) perfil = 1;
 
         byte[] foto = new byte[0];
         if (imageBitmap != null) {
@@ -88,7 +93,7 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
             Toast.makeText(this, "Ya existe un usuario con el mismo DNI", Toast.LENGTH_SHORT).show();
         }
         else {
-            Usuario usuario1 = new Usuario(nombre, apellidos, dni, usuario, password, 0, foto);
+            Usuario usuario1 = new Usuario(nombre, apellidos, dni, usuario, password, perfil, foto);
 
             sqLiteDatabase.insert(HelpDeskContract.UsuarioEntry.TABLE_NAME, null, usuario1.toContentValues());
             editTextNombre.setText(null);

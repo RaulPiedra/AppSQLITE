@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".EditarUsuarioActivity" >
+    tools:context=".EditarUsuarioActivity">
 
     <EditText
         android:id="@+id/editTextNombre2"
@@ -52,6 +52,12 @@
         android:ems="10"
         android:hint="password"
         android:inputType="textPassword" />
+
+    <CheckBox
+        android:id="@+id/checkBox2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Informatico" />
 
     <Button
         android:id="@+id/button"

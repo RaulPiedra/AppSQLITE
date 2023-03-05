@@ -11,6 +11,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -23,6 +24,7 @@ public class EditarUsuarioActivity extends AppCompatActivity {
     private EditText editTextDni2;
     private EditText editTextUsuario2;
     private EditText editTextPassword2;
+    private CheckBox checkBox2;
     private ImageView imageView3;
 
     @Override
@@ -37,6 +39,7 @@ public class EditarUsuarioActivity extends AppCompatActivity {
         editTextUsuario2 = findViewById(R.id.editTextUsuario2);
         editTextPassword2 = findViewById(R.id.editTextTextPassword2);
         imageView3 = findViewById(R.id.imageView3);
+        checkBox2 = findViewById(R.id.checkBox2);
 
         Usuario usuario = (Usuario) getIntent().getSerializableExtra("usuario");
 
@@ -47,6 +50,8 @@ public class EditarUsuarioActivity extends AppCompatActivity {
         editTextPassword2.setText(usuario.getPass());
         Bitmap bitmap = BitmapFactory.decodeByteArray(usuario.getFoto(),0, usuario.getFoto().length);
         imageView3.setImageBitmap(bitmap);
+
+        if (usuario.getPerfil() == 1) checkBox2.setChecked(true);
 
 
     }
