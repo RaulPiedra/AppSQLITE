@@ -33,10 +33,11 @@ public class UserActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position,
                                     long id) {
+                int LAUNCH_SECOND_ACTIVITY = 1;
                 Intent intent = new Intent(getApplicationContext(), EditarUsuarioActivity.class);
                 Usuario usuario = usuarios.get(position);
                 intent.putExtra("usuario", usuario);
-                startActivity(intent);
+                startActivityForResult(intent, LAUNCH_SECOND_ACTIVITY);
             }
         });
     }
@@ -82,4 +83,10 @@ public class UserActivity extends AppCompatActivity {
         listViewUsuario.setAdapter(adaptadorUsuario);
         helpDeskHelper.close();
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        cargarUsuarios();
+    } //onActivityResult
 }

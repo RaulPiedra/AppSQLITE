@@ -2,6 +2,8 @@ package com.terfezio.appsqlite;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -65,5 +67,12 @@ public class EditarUsuarioActivity extends AppCompatActivity {
         Toast.makeText(this, "Usuario borrado", Toast.LENGTH_SHORT).show();
 
         sqLiteDatabase.close();
+
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra("result", -1);
+        setResult(Activity.RESULT_OK, returnIntent);
+
+        finish();
+
     }
 }
