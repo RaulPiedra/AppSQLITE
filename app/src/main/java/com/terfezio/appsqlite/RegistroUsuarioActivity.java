@@ -56,28 +56,42 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
         HelpDeskHelper helpDeskHelper = new HelpDeskHelper(getApplicationContext());
         SQLiteDatabase sqLiteDatabase = helpDeskHelper.getWritableDatabase();
 
-        String nombre = String.valueOf(editTextNombre.getText());
-        String apellidos = String.valueOf(editTextApellidos.getText());
-        String dni = String.valueOf(editTextDni.getText());
-        String usuario = String.valueOf(editTextUsuario.getText());
-        String password = String.valueOf(editTextPassword.getText());
+        String nombre = editTextNombre.getText().toString();
+        String apellidos = editTextApellidos.getText().toString();
+        String dni = editTextDni.getText().toString();
+        String usuario = editTextUsuario.getText().toString();
+        String password = editTextPassword.getText().toString();
 
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-        byte[] foto = stream.toByteArray();
+        byte[] foto = new byte[0];
+        if (imageBitmap != null) {
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            foto = stream.toByteArray();
+        }
+        
 
-        Usuario usuario1 = new Usuario(nombre, apellidos, dni, usuario, password, 0, foto);
+        if(nombre.matches("") || apellidos.matches("") || dni.matches("") ||
+            usuario.matches("") || password.matches("") || imageBitmap == null) {
+            Toast.makeText(this, "Debe introducir todos los campos", Toast.LENGTH_SHORT).show();
 
-        sqLiteDatabase.insert(HelpDeskContract.UsuarioEntry.TABLE_NAME, null, usuario1.toContentValues());
-        editTextNombre.setText(null);
-        editTextApellidos.setText(null);
-        editTextDni.setText(null);
-        editTextUsuario.setText(null);
-        editTextPassword.setText(null);
-        imageView.setImageBitmap(null);
+        }
+        else {
+            Usuario usuario1 = new Usuario(nombre, apellidos, dni, usuario, password, 0, foto);
 
-        Toast.makeText(this, "Usuario creado", Toast.LENGTH_SHORT).show();
+            sqLiteDatabase.insert(HelpDeskContract.UsuarioEntry.TABLE_NAME, null, usuario1.toContentValues());
+            editTextNombre.setText(null);
+            editTextApellidos.setText(null);
+            editTextDni.setText(null);
+            editTextUsuario.setText(null);
+            editTextPassword.setText(null);
+            imageView.setImageBitmap(null);
 
-        sqLiteDatabase.close();
+            Toast.makeText(this, "Usuario creado", Toast.LENGTH_SHORT).show();
+
+            sqLiteDatabase.close();
+            finish();
+        }
+
+
     }
 }

@@ -76,9 +76,8 @@ public class UserActivity extends AppCompatActivity {
             int perfil = cursor.getInt(cursor.getColumnIndexOrThrow(HelpDeskContract.UsuarioEntry.COLUMN_NAME_PERFIL));
             Usuario usuario1 = new Usuario(nombre, apellidos, dni, usuario, pass, perfil, bytes);
             usuarios.add(usuario1);
-
-
         }
+        cursor.close();
         AdaptadorUsuario adaptadorUsuario = new AdaptadorUsuario(this, usuarios);
         listViewUsuario.setAdapter(adaptadorUsuario);
         helpDeskHelper.close();
