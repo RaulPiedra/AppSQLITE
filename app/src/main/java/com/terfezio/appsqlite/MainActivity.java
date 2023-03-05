@@ -23,4 +23,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(view.getContext(), RegistroUsuarioActivity.class);
         startActivity(intent);
     }
+
+    public void cargarIncidencias(View view) {
+        Intent intent = new Intent(view.getContext(), IncidenciaActivity.class);
+        startActivity(intent);
+    }
 }

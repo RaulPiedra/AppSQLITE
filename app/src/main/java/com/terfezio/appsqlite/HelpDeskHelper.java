@@ -66,9 +66,9 @@ public class HelpDeskHelper extends SQLiteOpenHelper {
         values.put(HelpDeskContract.UsuarioEntry.COLUMN_NAME_FOTO, b);
         db.insert(HelpDeskContract.UsuarioEntry.TABLE_NAME, null, values);
 
-        /*ContentValues values2 = new ContentValues();
+        ContentValues values2 = new ContentValues();
 
-        values.put(HelpDeskContract.UsuarioEntry.COLUMN_NAME_APELLIDOS, "Sanchez Perez");
+        /*values.put(HelpDeskContract.UsuarioEntry.COLUMN_NAME_APELLIDOS, "Sanchez Perez");
         values.put(HelpDeskContract.UsuarioEntry.COLUMN_NAME_DNI, "44444l");
         values.put(HelpDeskContract.UsuarioEntry.COLUMN_NAME_NOMBRE, "Juan");
         values.put(HelpDeskContract.UsuarioEntry.COLUMN_NAME_USUARIO, "juan");
@@ -76,6 +76,8 @@ public class HelpDeskHelper extends SQLiteOpenHelper {
         values.put(HelpDeskContract.UsuarioEntry.COLUMN_NAME_PERFIL, 0);
         values.put(HelpDeskContract.UsuarioEntry.COLUMN_NAME_FOTO, b);
         db.insert(HelpDeskContract.UsuarioEntry.TABLE_NAME, null, values2);*/
+        Usuario usuario = new Usuario("Juan", "Pardo", "44L", "juan", "123", 1, b);
+        db.insert(HelpDeskContract.UsuarioEntry.TABLE_NAME, null, usuario.toContentValues());
 
         /*ContentValues values2 = new ContentValues();
         values.put(HelpDeskContract.UsuarioEntry.COLUMN_NAME_APELLIDOS, "Pardo Sanchez");
@@ -87,7 +89,7 @@ public class HelpDeskHelper extends SQLiteOpenHelper {
         values.put(HelpDeskContract.UsuarioEntry.COLUMN_NAME_FOTO, b);
         db.insert(HelpDeskContract.UsuarioEntry.TABLE_NAME, null, values2);*/
 
-        Incidencia incidencia = new Incidencia("44445K", "21/2/2022", "observacion", "445556L", "activa", "31/12/2023", "obs. Inf.");
+        Incidencia incidencia = new Incidencia("44445K", "21/2/2022", "observacioon", "445556L", "activa", "31/12/2023", "obs. Inf.");
         db.insert(HelpDeskContract.IncidenciaEntry.TABLE_NAME, null, incidencia.toContentValues());
 
         Incidencia incidencia2 = new Incidencia("44446K", "21/2/2022", "observacion", "445556L", "activa", "31/12/2023", "nd");

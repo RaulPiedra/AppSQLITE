@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="304dp"
+        android:layout_height="405dp"
         app:srcCompat="@drawable/user" />
 
     <Button
@@ -26,4 +26,11 @@
         android:gravity="center"
         android:onClick="abrirCrearUsuario"
         android:text="Crear Usuario" />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="cargarIncidencias"
+        android:text="Lista de incidencias" />
 </LinearLayout>

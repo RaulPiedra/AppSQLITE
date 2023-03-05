@@ -3,6 +3,7 @@ package com.terfezio.appsqlite;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -68,12 +69,23 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
             imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
             foto = stream.toByteArray();
         }
+
+        //Ver si el dni ya existe
+        boolean existeDni = true;
+        String query = "SELECT * FROM usuario WHERE dni='" + dni + "'";
+        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+        if (cursor.getCount() <= 0) existeDni = false;
+        cursor.close();
         
 
         if(nombre.matches("") || apellidos.matches("") || dni.matches("") ||
             usuario.matches("") || password.matches("") || imageBitmap == null) {
             Toast.makeText(this, "Debe introducir todos los campos", Toast.LENGTH_SHORT).show();
 
+        }
+        else if (existeDni) {
+
+            Toast.makeText(this, "Ya existe un usuario con el mismo DNI", Toast.LENGTH_SHORT).show();
         }
         else {
             Usuario usuario1 = new Usuario(nombre, apellidos, dni, usuario, password, 0, foto);
