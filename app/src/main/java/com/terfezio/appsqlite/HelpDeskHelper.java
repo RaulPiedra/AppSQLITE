@@ -8,9 +8,11 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
+import com.terfezio.appsqlite.R;
 import android.media.Image;
 
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 
 import java.io.ByteArrayInputStream;
@@ -47,10 +49,12 @@ public class HelpDeskHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_INCIDENCIA_TABLE);
 
 
-        /*Bitmap image = BitmapFactory.decodeFile("app/src/main/res/drawable/user.png");
+
+
+        /*Bitmap image = BitmapFactory.decodeFile(Resources.getSystem().getDrawable(R.drawable.user));
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         image.compress(Bitmap.CompressFormat.PNG, 100, stream);
-        byte[] b = stream.toByteArray();*
+        byte[] b = stream.toByteArray();
 
          */
         byte[] b = {0};
