@@ -11,7 +11,9 @@
         android:id="@+id/imageView"
         android:layout_width="304dp"
         android:layout_height="405dp"
-        app:srcCompat="@drawable/user" />
+        android:layout_margin="10dp"
+        android:layout_gravity="center_horizontal"
+        app:srcCompat="@drawable/helpdesk" />
 
     <Button
         android:layout_width="match_parent"
