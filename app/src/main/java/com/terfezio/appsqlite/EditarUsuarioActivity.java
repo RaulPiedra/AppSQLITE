@@ -10,6 +10,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -131,5 +132,19 @@ public class EditarUsuarioActivity extends AppCompatActivity {
         setResult(Activity.RESULT_OK, returnIntent);
 
         finish();
+    }
+
+    public void tomarFoto(View view) {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(intent, 1);
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+        if (resultCode == RESULT_OK && intent.hasExtra("data")) {
+            Bundle extras = intent.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            imageView3.setImageBitmap(imageBitmap);
+        }
     }
 }
